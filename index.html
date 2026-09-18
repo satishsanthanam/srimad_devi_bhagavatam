@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Śrīmad Devī Bhāgavatam — Master Index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Cache-Busted Stylesheets -->
+    <link rel="stylesheet" href="res/style.css?v=1789718875">
+    
+    <!-- Pagefind Static Search Assets -->
+    <link href="pagefind/pagefind-ui.css?v=1789718875" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .book-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            overflow: hidden;
+            transition: border-color 0.15s ease;
+            scroll-margin-top: 2rem;
+        }
+        .search-container {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .book-card[open] {
+            border-color: var(--border-hover, #cbd5e1);
+        }
+        .book-summary {
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--san-label, #15803d);
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg, #ffffff);
+            transition: background-color 0.15s ease;
+        }
+        .book-summary:hover {
+            background-color: #f8fafc;
+        }
+        .book-summary::-webkit-details-marker {
+            display: none;
+        }
+        .badge-count {
+            background-color: var(--eng-bg, #f8fafc);
+            color: var(--text-muted, #64748b);
+            border-color: var(--border-color, #e2e8f0);
+        }
+
+        /* Row-wise Chapter Index Styling */
+        .chapter-list {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-color, #e2e8f0);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background-color: #ffffff;
+        }
+        .chapter-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background-color: var(--san-bg, #f0fdf4);
+            border: 1px solid var(--san-border, #bbf7d0);
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+        .chapter-row:hover {
+            background-color: #dcfce7;
+            border-color: var(--accent-primary, #15803d);
+        }
+        .chapter-num {
+            font-weight: 700;
+            color: var(--san-label, #166534);
+            min-width: 55px;
+            font-size: 0.9rem;
+        }
+        .chapter-title-text {
+            flex-grow: 1;
+            padding: 0 12px;
+            color: var(--text-primary, #0f172a);
+            font-size: 0.925rem;
+            font-weight: 500;
+        }
+        .btn-read {
+            padding: 5px 14px;
+            border: 1px solid var(--san-border, #bbf7d0);
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: var(--san-label, #15803d);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+        .btn-read:hover {
+            background-color: var(--san-label, #15803d);
+            color: #ffffff;
+        }
+
+        @media (max-width: 640px) {
+            .book-summary {
+                padding: 14px 16px;
+                font-size: 1rem;
+            }
+            .chapter-row {
+                flex-wrap: wrap;
+                gap: 6px;
+                padding: 10px;
+            }
+            .chapter-title-text {
+                width: 100%;
+                padding: 2px 0;
+            }
+            .btn-read {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="doc-header">
+            <div class="breadcrumb">Scriptures</div>
+            <h1>Śrīmad Devī Bhāgavatam</h1>
+            <p style="color: var(--text-muted, #64748b); margin-bottom: 8px; font-size: 0.95rem;">
+                English translation by <strong>Swami Vijñanananda (1921)</strong> 
+            </p>
+            <p style="color: var(--text-muted, #64748b); margin-bottom: 16px; font-size: 0.9rem;">
+                Select a chapter or search across Sanskrit text and English translations below.
+            </p>
+            <div class="controls">
+                <button class="btn btn-primary" onclick="toggleBooks(true)">Expand All Books</button>
+                <button class="btn" onclick="toggleBooks(false)">Collapse All</button>
+            </div>
+        </div>
+
+        <!-- Embedded Search UI Container -->
+        <div class="search-container">
+            <div id="search"></div>
+        </div>
+
+        
+        <details class="book-card" id="B01" open>
+            <summary class="book-summary">
+                <span class="book-title">Book 1</span>
+                <span class="badge badge-count">20 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">1.1</span>
+                <span class="chapter-title-text">On the questions by Śaunaka and others</span>
+                <a href="datafiles/B01/C01/1.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.2</span>
+                <span class="chapter-title-text">On questions put by Śaunaka and other Rsis</span>
+                <a href="datafiles/B01/C02/1.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.3</span>
+                <span class="chapter-title-text">On praising the Purāṇas and on each Vyāsa of every Dvāpara Yuga</span>
+                <a href="datafiles/B01/C03/1.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.4</span>
+                <span class="chapter-title-text">On the excellency of the Devī</span>
+                <a href="datafiles/B01/C04/1.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.5</span>
+                <span class="chapter-title-text">On the narrative of Hayagrīva</span>
+                <a href="datafiles/B01/C05/1.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.6</span>
+                <span class="chapter-title-text">On the preparation for war by Madhu Kaiṭabha</span>
+                <a href="datafiles/B01/C06/1.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.7</span>
+                <span class="chapter-title-text">On the praise of the Devī</span>
+                <a href="datafiles/B01/C07/1.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.8</span>
+                <span class="chapter-title-text">On deciding who is to be worshipped</span>
+                <a href="datafiles/B01/C08/1.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.9</span>
+                <span class="chapter-title-text">On the killing of Madhu Kaiṭabha</span>
+                <a href="datafiles/B01/C09/1.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.10</span>
+                <span class="chapter-title-text">On Śiva’s granting boons</span>
+                <a href="datafiles/B01/C10/1.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.11</span>
+                <span class="chapter-title-text">On the birth of Budha</span>
+                <a href="datafiles/B01/C11/1.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.12</span>
+                <span class="chapter-title-text">On the birth of Pururavā</span>
+                <a href="datafiles/B01/C12/1.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.13</span>
+                <span class="chapter-title-text">On Urvaśī and Pururavā</span>
+                <a href="datafiles/B01/C13/1.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.14</span>
+                <span class="chapter-title-text">On the birth of Śūka Deva and on the duties of householders</span>
+                <a href="datafiles/B01/C14/1.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.15</span>
+                <span class="chapter-title-text">On the dispassion of Śūka and the instructions of Bhagavatī to Hari</span>
+                <a href="datafiles/B01/C15/1.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.16</span>
+                <span class="chapter-title-text">On Śūka’s desiring to go to Mithilā to see Janaka</span>
+                <a href="datafiles/B01/C16/1.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.17</span>
+                <span class="chapter-title-text">On Śūka’s displaying his self-control amidst the women of the palace of Miṭhilā</span>
+                <a href="datafiles/B01/C17/1.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.18</span>
+                <span class="chapter-title-text">On Janaka’s giving instructions on truth to Śūka Deva</span>
+                <a href="datafiles/B01/C18/1.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.19</span>
+                <span class="chapter-title-text">On the description of the marriage of Śūka</span>
+                <a href="datafiles/B01/C19/1.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">1.20</span>
+                <span class="chapter-title-text">On Vyāsa doing his duties</span>
+                <a href="datafiles/B01/C20/1.20.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B02" >
+            <summary class="book-summary">
+                <span class="book-title">Book 2</span>
+                <span class="badge badge-count">12 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">2.1</span>
+                <span class="chapter-title-text">On the birth of Matsyagandhā</span>
+                <a href="datafiles/B02/C01/2.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.2</span>
+                <span class="chapter-title-text">On the birth of Vyāsa Deva</span>
+                <a href="datafiles/B02/C02/2.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.3</span>
+                <span class="chapter-title-text">On the description of the curse on Gaṅgā, Mahābhiṣa and Vasus</span>
+                <a href="datafiles/B02/C03/2.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.4</span>
+                <span class="chapter-title-text">On the birth of the Vasus</span>
+                <a href="datafiles/B02/C04/2.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.5</span>
+                <span class="chapter-title-text">On the marriage of Satyavatī</span>
+                <a href="datafiles/B02/C05/2.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.6</span>
+                <span class="chapter-title-text">On the birth of the Pāṇḍavas</span>
+                <a href="datafiles/B02/C06/2.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.7</span>
+                <span class="chapter-title-text">On shewing the departed ones</span>
+                <a href="datafiles/B02/C07/2.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.8</span>
+                <span class="chapter-title-text">On the extinction of the family of Yadu and on the anecdote of Parīkṣit</span>
+                <a href="datafiles/B02/C08/2.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.9</span>
+                <span class="chapter-title-text">On the account of Ruru</span>
+                <a href="datafiles/B02/C09/2.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.10</span>
+                <span class="chapter-title-text">On the death of king Parīkṣit</span>
+                <a href="datafiles/B02/C10/2.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.11</span>
+                <span class="chapter-title-text">On the Sarpa Yajña</span>
+                <a href="datafiles/B02/C11/2.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">2.12</span>
+                <span class="chapter-title-text">On the birth of Āstika</span>
+                <a href="datafiles/B02/C12/2.12.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B03" >
+            <summary class="book-summary">
+                <span class="book-title">Book 3</span>
+                <span class="badge badge-count">30 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">3.1</span>
+                <span class="chapter-title-text">On the questions put by Janamejaya</span>
+                <a href="datafiles/B03/C01/3.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.2</span>
+                <span class="chapter-title-text">On Rudras going towards the heavens on the celestial car</span>
+                <a href="datafiles/B03/C02/3.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.3</span>
+                <span class="chapter-title-text">On seeing the Devī</span>
+                <a href="datafiles/B03/C03/3.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.4</span>
+                <span class="chapter-title-text">On the hymns to the Great Devī by Viṣṇu</span>
+                <a href="datafiles/B03/C04/3.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.5</span>
+                <span class="chapter-title-text">On the chanting of hymns by Hara and Brahmā</span>
+                <a href="datafiles/B03/C05/3.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.6</span>
+                <span class="chapter-title-text">On the description of the Devī’s Vibhutis (powers)</span>
+                <a href="datafiles/B03/C06/3.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.7</span>
+                <span class="chapter-title-text">On the creation and the Tattvas and their presiding deities</span>
+                <a href="datafiles/B03/C07/3.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.8</span>
+                <span class="chapter-title-text">On the Guṇas and their forms</span>
+                <a href="datafiles/B03/C08/3.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.9</span>
+                <span class="chapter-title-text">On the characteristics of the Guṇas</span>
+                <a href="datafiles/B03/C09/3.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.10</span>
+                <span class="chapter-title-text">On the story of Satyavrata</span>
+                <a href="datafiles/B03/C10/3.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.11</span>
+                <span class="chapter-title-text">On the merits of the Devī in the story of Satyavrata</span>
+                <a href="datafiles/B03/C11/3.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.12</span>
+                <span class="chapter-title-text">On the Ambā Yajña rules</span>
+                <a href="datafiles/B03/C12/3.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.13</span>
+                <span class="chapter-title-text">On the Devī Yajña by Śrī Viṣṇu</span>
+                <a href="datafiles/B03/C13/3.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.14</span>
+                <span class="chapter-title-text">On the narration of the glories of the Devī</span>
+                <a href="datafiles/B03/C14/3.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.15</span>
+                <span class="chapter-title-text">On the battle between Yudhājit and Vīrasena</span>
+                <a href="datafiles/B03/C15/3.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.16</span>
+                <span class="chapter-title-text">On the glory of the Devī</span>
+                <a href="datafiles/B03/C16/3.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.17</span>
+                <span class="chapter-title-text">On the story of Viśvāmitra</span>
+                <a href="datafiles/B03/C17/3.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.18</span>
+                <span class="chapter-title-text">The Svayambara of Śaśikalā</span>
+                <a href="datafiles/B03/C18/3.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.19</span>
+                <span class="chapter-title-text">On the going to the Svayamvara assembly of Sudarśana</span>
+                <a href="datafiles/B03/C19/3.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.20</span>
+                <span class="chapter-title-text">On the Svayamvara hall and the kings conversation there</span>
+                <a href="datafiles/B03/C20/3.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.21</span>
+                <span class="chapter-title-text">On the king of Benares fulfilling the advice of his daughter</span>
+                <a href="datafiles/B03/C21/3.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.22</span>
+                <span class="chapter-title-text">On Sudarśana’s marriage</span>
+                <a href="datafiles/B03/C22/3.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.23</span>
+                <span class="chapter-title-text">On the killing of the enemy of Sudarśana in the great war</span>
+                <a href="datafiles/B03/C23/3.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.24</span>
+                <span class="chapter-title-text">On the installation of Durgā Devī in the city of Benares</span>
+                <a href="datafiles/B03/C24/3.24.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.25</span>
+                <span class="chapter-title-text">On the installation of the Devī in Ayodhyā and Benares</span>
+                <a href="datafiles/B03/C25/3.25.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.26</span>
+                <span class="chapter-title-text">On the narration of what are to be done in the Navarātri</span>
+                <a href="datafiles/B03/C26/3.26.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.27</span>
+                <span class="chapter-title-text">On the virgins fit to be worshipped and the Glory of the Devī</span>
+                <a href="datafiles/B03/C27/3.27.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.28</span>
+                <span class="chapter-title-text">On the incidents connected with Navarātri</span>
+                <a href="datafiles/B03/C28/3.28.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.29</span>
+                <span class="chapter-title-text">On the stealing of Sītā and the sorrows of Rāma</span>
+                <a href="datafiles/B03/C29/3.29.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">3.30</span>
+                <span class="chapter-title-text">On the narration of the Navarātra ceremony by Nārada and the performance of that by Rāma Chandra</span>
+                <a href="datafiles/B03/C30/3.30.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B04" >
+            <summary class="book-summary">
+                <span class="book-title">Book 4</span>
+                <span class="badge badge-count">25 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">4.1</span>
+                <span class="chapter-title-text">On the questions put by Janamejaya regarding Kṛṣṇa’s incarnation</span>
+                <a href="datafiles/B04/C01/4.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.2</span>
+                <span class="chapter-title-text">On the supremacy of the effects of Karma</span>
+                <a href="datafiles/B04/C02/4.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.3</span>
+                <span class="chapter-title-text">On the former curse of Vasudeva and Devakī</span>
+                <a href="datafiles/B04/C03/4.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.4</span>
+                <span class="chapter-title-text">On Adharma</span>
+                <a href="datafiles/B04/C04/4.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.5</span>
+                <span class="chapter-title-text">On the dialogues of Nara Nārāyaṇa</span>
+                <a href="datafiles/B04/C05/4.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.6</span>
+                <span class="chapter-title-text">On the origin of Urvaśī</span>
+                <a href="datafiles/B04/C06/4.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.7</span>
+                <span class="chapter-title-text">On Ahamkāra</span>
+                <a href="datafiles/B04/C07/4.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.8</span>
+                <span class="chapter-title-text">On going to the Tīrthas</span>
+                <a href="datafiles/B04/C08/4.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.9</span>
+                <span class="chapter-title-text">On the fight between the Riṣis and Prahlāda</span>
+                <a href="datafiles/B04/C09/4.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.10</span>
+                <span class="chapter-title-text">On the curse on Viṣṇu by Bhṛgu</span>
+                <a href="datafiles/B04/C10/4.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.11</span>
+                <span class="chapter-title-text">On Śukrā’s going to Mahādeva to get the Mantra</span>
+                <a href="datafiles/B04/C11/4.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.12</span>
+                <span class="chapter-title-text">On Bhṛgu’s curse and the dialogue between Śukrācārya and the Daityas</span>
+                <a href="datafiles/B04/C12/4.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.13</span>
+                <span class="chapter-title-text">On cheating the Daityas</span>
+                <a href="datafiles/B04/C13/4.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.14</span>
+                <span class="chapter-title-text">On the Daityas getting back their Śukrācārya</span>
+                <a href="datafiles/B04/C14/4.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.15</span>
+                <span class="chapter-title-text">On the truce between the Daityas and the Devas</span>
+                <a href="datafiles/B04/C15/4.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.16</span>
+                <span class="chapter-title-text">On the Birth of the several Avatāras of Viṣṇu and their deeds</span>
+                <a href="datafiles/B04/C16/4.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.17</span>
+                <span class="chapter-title-text">On the questions asked by Janamejaya</span>
+                <a href="datafiles/B04/C17/4.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.18</span>
+                <span class="chapter-title-text">On the Devī Earth’s going to the Heavens</span>
+                <a href="datafiles/B04/C18/4.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.19</span>
+                <span class="chapter-title-text">On chanting the hymns to the Devī</span>
+                <a href="datafiles/B04/C19/4.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.20</span>
+                <span class="chapter-title-text">On Devakī’s marriage</span>
+                <a href="datafiles/B04/C20/4.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.21</span>
+                <span class="chapter-title-text">On the killing of the sons of Devakī</span>
+                <a href="datafiles/B04/C21/4.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.22</span>
+                <span class="chapter-title-text">On the Part Incarnations of the Several Devas</span>
+                <a href="datafiles/B04/C22/4.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.23</span>
+                <span class="chapter-title-text">On the birth of Śrī Kṛṣṇa</span>
+                <a href="datafiles/B04/C23/4.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.24</span>
+                <span class="chapter-title-text">On the stealing away of Pradyūmna</span>
+                <a href="datafiles/B04/C24/4.24.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">4.25</span>
+                <span class="chapter-title-text">On the Devī’s Highest Supremacy</span>
+                <a href="datafiles/B04/C25/4.25.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B05" >
+            <summary class="book-summary">
+                <span class="book-title">Book 5</span>
+                <span class="badge badge-count">35 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">5.1</span>
+                <span class="chapter-title-text">On the superiority of Rudra over Viṣṇu</span>
+                <a href="datafiles/B05/C01/5.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.2</span>
+                <span class="chapter-title-text">On the birth of Dānava Mahiṣa</span>
+                <a href="datafiles/B05/C02/5.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.3</span>
+                <span class="chapter-title-text">On the Daitya armies getting ready</span>
+                <a href="datafiles/B05/C03/5.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.4</span>
+                <span class="chapter-title-text">On the war counsels given by Indra</span>
+                <a href="datafiles/B05/C04/5.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.5</span>
+                <span class="chapter-title-text">On the defeat of the Dānava forces of Mahiṣa</span>
+                <a href="datafiles/B05/C05/5.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.6</span>
+                <span class="chapter-title-text">On the Deva Dānava fight</span>
+                <a href="datafiles/B05/C06/5.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.7</span>
+                <span class="chapter-title-text">On the going of the Devas to Kailāsa</span>
+                <a href="datafiles/B05/C07/5.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.8</span>
+                <span class="chapter-title-text">On the description of the origin and the form of the Devī</span>
+                <a href="datafiles/B05/C08/5.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.9</span>
+                <span class="chapter-title-text">On the worship by the gods to the Devī</span>
+                <a href="datafiles/B05/C09/5.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.10</span>
+                <span class="chapter-title-text">On the messenger’s news to Mahiṣa</span>
+                <a href="datafiles/B05/C10/5.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.11</span>
+                <span class="chapter-title-text">On the appearing of the Dānava Tāmra before the Devī</span>
+                <a href="datafiles/B05/C11/5.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.12</span>
+                <span class="chapter-title-text">On the holding of counsel by Mahiṣāsura</span>
+                <a href="datafiles/B05/C12/5.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.13</span>
+                <span class="chapter-title-text">On the killing of Vāskala and Durmukha</span>
+                <a href="datafiles/B05/C13/5.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.14</span>
+                <span class="chapter-title-text">On the killing of Tāmra and Cikṣura</span>
+                <a href="datafiles/B05/C14/5.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.15</span>
+                <span class="chapter-title-text">On the slaying of Viḍālākṣa and Asilomā</span>
+                <a href="datafiles/B05/C15/5.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.16</span>
+                <span class="chapter-title-text">On the conversation between the Devī and Mahiṣāsura</span>
+                <a href="datafiles/B05/C16/5.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.17</span>
+                <span class="chapter-title-text">On Mandodarī’s accounts</span>
+                <a href="datafiles/B05/C17/5.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.18</span>
+                <span class="chapter-title-text">On the killing of the Dānava Mahiṣāsura</span>
+                <a href="datafiles/B05/C18/5.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.19</span>
+                <span class="chapter-title-text">On the prayer and hymns to the Devī</span>
+                <a href="datafiles/B05/C19/5.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.20</span>
+                <span class="chapter-title-text">On the peace of the world</span>
+                <a href="datafiles/B05/C20/5.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.21</span>
+                <span class="chapter-title-text">On the conquest of the Heavens by Śumbha and Niśumbha</span>
+                <a href="datafiles/B05/C21/5.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.22</span>
+                <span class="chapter-title-text">On the eulogising of the Devī by the Devas</span>
+                <a href="datafiles/B05/C22/5.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.23</span>
+                <span class="chapter-title-text">On the prowess of Kauśikī</span>
+                <a href="datafiles/B05/C23/5.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.24</span>
+                <span class="chapter-title-text">On the description and Dhūmralocana giving the news</span>
+                <a href="datafiles/B05/C24/5.24.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.25</span>
+                <span class="chapter-title-text">On the killing of Dhūmralocana</span>
+                <a href="datafiles/B05/C25/5.25.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.26</span>
+                <span class="chapter-title-text">On the killing of Caṇḍa and Muṇḍa</span>
+                <a href="datafiles/B05/C26/5.26.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.27</span>
+                <span class="chapter-title-text">On the description of the war of Raktabīja</span>
+                <a href="datafiles/B05/C27/5.27.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.28</span>
+                <span class="chapter-title-text">On the description of the fighting of the goddesses</span>
+                <a href="datafiles/B05/C28/5.28.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.29</span>
+                <span class="chapter-title-text">On the killing of Raktabīja</span>
+                <a href="datafiles/B05/C29/5.29.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.30</span>
+                <span class="chapter-title-text">On the killing of Niśumbha</span>
+                <a href="datafiles/B05/C30/5.30.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.31</span>
+                <span class="chapter-title-text">On the death of Śumbha</span>
+                <a href="datafiles/B05/C31/5.31.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.32</span>
+                <span class="chapter-title-text">On the King Suratha’s going to the forest</span>
+                <a href="datafiles/B05/C32/5.32.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.33</span>
+                <span class="chapter-title-text">On the description of the greatness of the Devī</span>
+                <a href="datafiles/B05/C33/5.33.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.34</span>
+                <span class="chapter-title-text">On the methods of the worship of the Devī</span>
+                <a href="datafiles/B05/C34/5.34.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">5.35</span>
+                <span class="chapter-title-text">On the receiving of the boons by the King Suratha and the Vaiśya Samādhi</span>
+                <a href="datafiles/B05/C35/5.35.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B06" >
+            <summary class="book-summary">
+                <span class="book-title">Book 6</span>
+                <span class="badge badge-count">31 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">6.1</span>
+                <span class="chapter-title-text">On Triśirā’s austerities</span>
+                <a href="datafiles/B06/C01/6.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.2</span>
+                <span class="chapter-title-text">On the birth of Vṛtrāsura</span>
+                <a href="datafiles/B06/C02/6.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.3</span>
+                <span class="chapter-title-text">On the Deva defeat and on Vṛtra’s tapasyā</span>
+                <a href="datafiles/B06/C03/6.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.4</span>
+                <span class="chapter-title-text">On the defeat of the Devas by Vṛtra</span>
+                <a href="datafiles/B06/C04/6.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.5</span>
+                <span class="chapter-title-text">On praising the Devī</span>
+                <a href="datafiles/B06/C05/6.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.6</span>
+                <span class="chapter-title-text">On the slaying of Vṛtrāsura</span>
+                <a href="datafiles/B06/C06/6.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.7</span>
+                <span class="chapter-title-text">On Indra’s living under disguise in the Mānas Lake</span>
+                <a href="datafiles/B06/C07/6.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.8</span>
+                <span class="chapter-title-text">On Śacī’s praising the Devī</span>
+                <a href="datafiles/B06/C08/6.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.9</span>
+                <span class="chapter-title-text">On Indra’s getting the fruits of Brahmahattyā and on the downfall of king Nahuṣa</span>
+                <a href="datafiles/B06/C09/6.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.10</span>
+                <span class="chapter-title-text">On the phase of Karma</span>
+                <a href="datafiles/B06/C10/6.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.11</span>
+                <span class="chapter-title-text">On the ascertainment of Dharma</span>
+                <a href="datafiles/B06/C11/6.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.12</span>
+                <span class="chapter-title-text">On the cause of the war between Ādi and Baka</span>
+                <a href="datafiles/B06/C12/6.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.13</span>
+                <span class="chapter-title-text">On the description of the battle between Ādi and Baka after the discourse on Śunahśepha</span>
+                <a href="datafiles/B06/C13/6.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.14</span>
+                <span class="chapter-title-text">On the birth of Vaśiṣṭha from Mitrā Varuṇa</span>
+                <a href="datafiles/B06/C14/6.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.15</span>
+                <span class="chapter-title-text">On the Nimi’s getting of another body and the beginning of the story of Haihayas</span>
+                <a href="datafiles/B06/C15/6.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.16</span>
+                <span class="chapter-title-text">On the incidents preliminary to the Haihaya and Bhārgava affairs</span>
+                <a href="datafiles/B06/C16/6.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.17</span>
+                <span class="chapter-title-text">On the continuance of the family of Bhṛgu</span>
+                <a href="datafiles/B06/C17/6.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.18</span>
+                <span class="chapter-title-text">On the origin of the Haihaya Dynasty</span>
+                <a href="datafiles/B06/C18/6.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.19</span>
+                <span class="chapter-title-text">On the origin of Haihayas from a mare</span>
+                <a href="datafiles/B06/C19/6.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.20</span>
+                <span class="chapter-title-text">On the son born of mare by Hari</span>
+                <a href="datafiles/B06/C20/6.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.21</span>
+                <span class="chapter-title-text">On the installation of Ekavīra and the birth of Ekāvalī</span>
+                <a href="datafiles/B06/C21/6.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.22</span>
+                <span class="chapter-title-text">On the narration to Haihaya the stealing away of Ekāvalī</span>
+                <a href="datafiles/B06/C22/6.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.23</span>
+                <span class="chapter-title-text">On the battle of Haihaya and Kālaketu</span>
+                <a href="datafiles/B06/C23/6.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.24</span>
+                <span class="chapter-title-text">On the description of Vikṣepa Śakti</span>
+                <a href="datafiles/B06/C24/6.24.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.25</span>
+                <span class="chapter-title-text">On the cause of Moha of Vyāsa Deva asked before Nārada</span>
+                <a href="datafiles/B06/C25/6.25.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.26</span>
+                <span class="chapter-title-text">On the description by Nārada of his own Moha</span>
+                <a href="datafiles/B06/C26/6.26.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.27</span>
+                <span class="chapter-title-text">On the marriage of Nārada and his face getting transformed into that of a monkey</span>
+                <a href="datafiles/B06/C27/6.27.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.28</span>
+                <span class="chapter-title-text">On Nārada’s getting the feminine form</span>
+                <a href="datafiles/B06/C28/6.28.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.29</span>
+                <span class="chapter-title-text">On the Nārada’s getting again his male form</span>
+                <a href="datafiles/B06/C29/6.29.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.30</span>
+                <span class="chapter-title-text">On the glory of Mahā Māyā</span>
+                <a href="datafiles/B06/C30/6.30.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">6.31</span>
+                <span class="chapter-title-text">On the glory of Māyā</span>
+                <a href="datafiles/B06/C31/6.31.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B07" >
+            <summary class="book-summary">
+                <span class="book-title">Book 7</span>
+                <span class="badge badge-count">40 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">7.1</span>
+                <span class="chapter-title-text">On the Solar and Lunar Kings</span>
+                <a href="datafiles/B07/C01/7.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.2</span>
+                <span class="chapter-title-text">On the piercing of the eyes of Cyavana Muni</span>
+                <a href="datafiles/B07/C02/7.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.3</span>
+                <span class="chapter-title-text">On the bestowing of the daughter of the King Śaryāti to Cyavana Muni</span>
+                <a href="datafiles/B07/C03/7.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.4</span>
+                <span class="chapter-title-text">On the conversation between the two Aśvins and the Princess Sukanyā</span>
+                <a href="datafiles/B07/C04/7.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.5</span>
+                <span class="chapter-title-text">On the getting of youth by Cyavana Muni</span>
+                <a href="datafiles/B07/C05/7.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.6</span>
+                <span class="chapter-title-text">On granting the Aśvins the right to drink the Soma juice</span>
+                <a href="datafiles/B07/C06/7.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.7</span>
+                <span class="chapter-title-text">On the twin Aśvins drinking the Soma Cup</span>
+                <a href="datafiles/B07/C07/7.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.8</span>
+                <span class="chapter-title-text">On the King Revata and the Solar Dynasty</span>
+                <a href="datafiles/B07/C08/7.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.9</span>
+                <span class="chapter-title-text">On the story of Kākutstha and the origin of Māndhātā</span>
+                <a href="datafiles/B07/C09/7.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.10</span>
+                <span class="chapter-title-text">On the story of Satyavrata</span>
+                <a href="datafiles/B07/C10/7.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.11</span>
+                <span class="chapter-title-text">On the story of Triśaṅku</span>
+                <a href="datafiles/B07/C11/7.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.12</span>
+                <span class="chapter-title-text">On the description of Vaśiṣṭha’s curse on Triśaṅku</span>
+                <a href="datafiles/B07/C12/7.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.13</span>
+                <span class="chapter-title-text">On the coming of Viśvāmitra to Triśaṅku</span>
+                <a href="datafiles/B07/C13/7.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.14</span>
+                <span class="chapter-title-text">On the going to Heavens of Triśaṅku and the commencement of Hariścandra’s narrative</span>
+                <a href="datafiles/B07/C14/7.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.15</span>
+                <span class="chapter-title-text">On the story of the King Hariścandra</span>
+                <a href="datafiles/B07/C15/7.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.16</span>
+                <span class="chapter-title-text">On the story of Śunahśepha</span>
+                <a href="datafiles/B07/C16/7.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.17</span>
+                <span class="chapter-title-text">On the freeing of Śunahśepha and the curing of Hariścandra</span>
+                <a href="datafiles/B07/C17/7.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.18</span>
+                <span class="chapter-title-text">On the origin of the quarrel between Hariścandra and Viśvāmitra</span>
+                <a href="datafiles/B07/C18/7.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.19</span>
+                <span class="chapter-title-text">On the taking away of Hariścandra’s Kingdom</span>
+                <a href="datafiles/B07/C19/7.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.20</span>
+                <span class="chapter-title-text">On the earnestness of Hariścandra to pay off the Dakṣiṇā</span>
+                <a href="datafiles/B07/C20/7.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.21</span>
+                <span class="chapter-title-text">On the description of the sorrows of Hariścandra</span>
+                <a href="datafiles/B07/C21/7.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.22</span>
+                <span class="chapter-title-text">On the selling of Hariścandra’s wife</span>
+                <a href="datafiles/B07/C22/7.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.23</span>
+                <span class="chapter-title-text">On the King Hariścandra’s acknowledging of the slavery of the Cāṇḍāla</span>
+                <a href="datafiles/B07/C23/7.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.24</span>
+                <span class="chapter-title-text">On the stay of Hariścandra in the burning ground</span>
+                <a href="datafiles/B07/C24/7.24.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.25</span>
+                <span class="chapter-title-text">On the quarrels between Hariścandra and Viśvāmitra</span>
+                <a href="datafiles/B07/C25/7.25.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.26</span>
+                <span class="chapter-title-text">On the narration of the sorrows of Hariścandra</span>
+                <a href="datafiles/B07/C26/7.26.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.27</span>
+                <span class="chapter-title-text">On the going of Hariścandra to the Heavens</span>
+                <a href="datafiles/B07/C27/7.27.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.28</span>
+                <span class="chapter-title-text">On the glory of the Śatakṣi Devī</span>
+                <a href="datafiles/B07/C28/7.28.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.29</span>
+                <span class="chapter-title-text">On the birth of the Bhagavatī in the house of Dakṣa</span>
+                <a href="datafiles/B07/C29/7.29.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.30</span>
+                <span class="chapter-title-text">On the birth of Gaurī, the seats of the Deity, and the distraction of Śiva</span>
+                <a href="datafiles/B07/C30/7.30.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.31</span>
+                <span class="chapter-title-text">On the Birth of Pārvatī in the House of Himālayās</span>
+                <a href="datafiles/B07/C31/7.31.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.32</span>
+                <span class="chapter-title-text">On Self-realization, Spoken by the World Mother</span>
+                <a href="datafiles/B07/C32/7.32.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.33</span>
+                <span class="chapter-title-text">On the Devī’s Viraṭ Rūpa</span>
+                <a href="datafiles/B07/C33/7.33.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.34</span>
+                <span class="chapter-title-text">On the Knowledge and Final Emancipation</span>
+                <a href="datafiles/B07/C34/7.34.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.35</span>
+                <span class="chapter-title-text">On the Yoga and Mantra Siddhi</span>
+                <a href="datafiles/B07/C35/7.35.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.36</span>
+                <span class="chapter-title-text">On the Highest Knowledge of Brahmā</span>
+                <a href="datafiles/B07/C36/7.36.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.37</span>
+                <span class="chapter-title-text">On Bhakti Yoga</span>
+                <a href="datafiles/B07/C37/7.37.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.38</span>
+                <span class="chapter-title-text">The Vows and the Sacred Places of the Devī</span>
+                <a href="datafiles/B07/C38/7.38.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.39</span>
+                <span class="chapter-title-text">The Worship of the World Mother</span>
+                <a href="datafiles/B07/C39/7.39.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">7.40</span>
+                <span class="chapter-title-text">The External Worship of the Devī</span>
+                <a href="datafiles/B07/C40/7.40.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B08" >
+            <summary class="book-summary">
+                <span class="book-title">Book 8</span>
+                <span class="badge badge-count">24 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">8.1</span>
+                <span class="chapter-title-text">On the description of the worlds</span>
+                <a href="datafiles/B08/C01/8.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.2</span>
+                <span class="chapter-title-text">On the uplifting of the Earth by the Sacrificial Boar</span>
+                <a href="datafiles/B08/C02/8.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.3</span>
+                <span class="chapter-title-text">On the description of the family of Manu</span>
+                <a href="datafiles/B08/C03/8.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.4</span>
+                <span class="chapter-title-text">On the narration of the family of Priyavrata</span>
+                <a href="datafiles/B08/C04/8.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.5</span>
+                <span class="chapter-title-text">On the description of the receptacle of beings and on the mountains and on the origin of rivers</span>
+                <a href="datafiles/B08/C05/8.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.6</span>
+                <span class="chapter-title-text">On the rivers and the mountains Sumeru and others</span>
+                <a href="datafiles/B08/C06/8.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.7</span>
+                <span class="chapter-title-text">On the Ganges and the Varṣas</span>
+                <a href="datafiles/B08/C07/8.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.8</span>
+                <span class="chapter-title-text">On the description of Ilāvrita</span>
+                <a href="datafiles/B08/C08/8.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.9</span>
+                <span class="chapter-title-text">On the narration of the division of the continents</span>
+                <a href="datafiles/B08/C09/8.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.10</span>
+                <span class="chapter-title-text">On the description of Bhuvanakoṣa</span>
+                <a href="datafiles/B08/C10/8.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.11</span>
+                <span class="chapter-title-text">On the description of the continents and of Bhāratavarṣa</span>
+                <a href="datafiles/B08/C11/8.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.12</span>
+                <span class="chapter-title-text">On the narration of Plakṣa, Śālmala and Kuśa Dvīpas</span>
+                <a href="datafiles/B08/C12/8.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.13</span>
+                <span class="chapter-title-text">On the description of the remaining Dvīpas</span>
+                <a href="datafiles/B08/C13/8.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.14</span>
+                <span class="chapter-title-text">On the description of the Lokāloka space</span>
+                <a href="datafiles/B08/C14/8.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.15</span>
+                <span class="chapter-title-text">On the motion of the Sun</span>
+                <a href="datafiles/B08/C15/8.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.16</span>
+                <span class="chapter-title-text">On the motion of the planets</span>
+                <a href="datafiles/B08/C16/8.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.17</span>
+                <span class="chapter-title-text">On the Dhruva Maṇḍalam</span>
+                <a href="datafiles/B08/C17/8.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.18</span>
+                <span class="chapter-title-text">On the narrative of Rāhu Maṇḍalam</span>
+                <a href="datafiles/B08/C18/8.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.19</span>
+                <span class="chapter-title-text">On the narrative of the Atala, etc.</span>
+                <a href="datafiles/B08/C19/8.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.20</span>
+                <span class="chapter-title-text">On the narrative of the Talātala</span>
+                <a href="datafiles/B08/C20/8.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.21</span>
+                <span class="chapter-title-text">On the narrative of hells</span>
+                <a href="datafiles/B08/C21/8.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.22</span>
+                <span class="chapter-title-text">On the narrative of the sins leading to hells</span>
+                <a href="datafiles/B08/C22/8.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.23</span>
+                <span class="chapter-title-text">On the description of the remaining hells</span>
+                <a href="datafiles/B08/C23/8.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">8.24</span>
+                <span class="chapter-title-text">On the worship of the Devī</span>
+                <a href="datafiles/B08/C24/8.24.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B09" >
+            <summary class="book-summary">
+                <span class="book-title">Book 9</span>
+                <span class="badge badge-count">50 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">9.1</span>
+                <span class="chapter-title-text">On the description of Prakṛti</span>
+                <a href="datafiles/B09/C01/9.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.2</span>
+                <span class="chapter-title-text">On the origin of Prakṛti and Puruṣa</span>
+                <a href="datafiles/B09/C02/9.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.3</span>
+                <span class="chapter-title-text">On the origin of Brahmā, Viṣṇu, Maheśa and others</span>
+                <a href="datafiles/B09/C03/9.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.4</span>
+                <span class="chapter-title-text">On the hymn, worship and Kavaca of Sarasvatī Devī</span>
+                <a href="datafiles/B09/C04/9.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.5</span>
+                <span class="chapter-title-text">On Sarasvatī stotra by Yājñavalkya</span>
+                <a href="datafiles/B09/C05/9.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.6</span>
+                <span class="chapter-title-text">On the coming in this world of Lakṣmī, Gaṅgā and Sarasvatī</span>
+                <a href="datafiles/B09/C06/9.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.7</span>
+                <span class="chapter-title-text">On the curses of Gaṅgā, Sarasvatī and Lakṣmī</span>
+                <a href="datafiles/B09/C07/9.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.8</span>
+                <span class="chapter-title-text">On the greatness of Kali</span>
+                <a href="datafiles/B09/C08/9.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.9</span>
+                <span class="chapter-title-text">On the origin of the Śakti of the Earth</span>
+                <a href="datafiles/B09/C09/9.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.10</span>
+                <span class="chapter-title-text">On the offences caused to the Earth and punishments thereof</span>
+                <a href="datafiles/B09/C10/9.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.11</span>
+                <span class="chapter-title-text">On the origin of the Ganges</span>
+                <a href="datafiles/B09/C11/9.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.12</span>
+                <span class="chapter-title-text">On the origin of Gaṅgā</span>
+                <a href="datafiles/B09/C12/9.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.13</span>
+                <span class="chapter-title-text">On the anecdote of Gaṅgā</span>
+                <a href="datafiles/B09/C13/9.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.14</span>
+                <span class="chapter-title-text">On the story of Gaṅgā becoming the wife of Nārāyaṇa</span>
+                <a href="datafiles/B09/C14/9.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.15</span>
+                <span class="chapter-title-text">On the anecdote of Tulasī</span>
+                <a href="datafiles/B09/C15/9.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.16</span>
+                <span class="chapter-title-text">On the incarnation of Mahā Lakṣmī in the house of Kuśadhvaja</span>
+                <a href="datafiles/B09/C16/9.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.17</span>
+                <span class="chapter-title-text">On the anecdote of Tulasī</span>
+                <a href="datafiles/B09/C17/9.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.18</span>
+                <span class="chapter-title-text">On the union of Śaṅkhacūḍa with Tulasī</span>
+                <a href="datafiles/B09/C18/9.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.19</span>
+                <span class="chapter-title-text">On the going of the Devas to Vaikuṇṭha after Tulasī’s marriage with Śaṅkhacūḍa</span>
+                <a href="datafiles/B09/C19/9.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.20</span>
+                <span class="chapter-title-text">On the war preparations of Śaṅkhacūḍa with the Devas</span>
+                <a href="datafiles/B09/C20/9.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.21</span>
+                <span class="chapter-title-text">On the meeting of Mahādeva and Śaṅkhacūḍa for an encounter in conflict</span>
+                <a href="datafiles/B09/C21/9.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.22</span>
+                <span class="chapter-title-text">On the fight between the Devas and Śaṅkhacūḍa</span>
+                <a href="datafiles/B09/C22/9.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.23</span>
+                <span class="chapter-title-text">On the killing of Śaṅkhacūḍa</span>
+                <a href="datafiles/B09/C23/9.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.24</span>
+                <span class="chapter-title-text">On the glory of Tulasī</span>
+                <a href="datafiles/B09/C24/9.24.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.25</span>
+                <span class="chapter-title-text">On the method of worship of Tulasī Devī</span>
+                <a href="datafiles/B09/C25/9.25.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.26</span>
+                <span class="chapter-title-text">On the narration of Sāvitrī</span>
+                <a href="datafiles/B09/C26/9.26.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.27</span>
+                <span class="chapter-title-text">On the birth, etc., of Sāvitrī</span>
+                <a href="datafiles/B09/C27/9.27.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.28</span>
+                <span class="chapter-title-text">On the story of Sāvitrī</span>
+                <a href="datafiles/B09/C28/9.28.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.29</span>
+                <span class="chapter-title-text">On the anecdote of Sāvitrī, on gifts and on the effects of Karmas</span>
+                <a href="datafiles/B09/C29/9.29.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.30</span>
+                <span class="chapter-title-text">On the conversation between Sāvitrī and Yama and on the fruition of Karmas</span>
+                <a href="datafiles/B09/C30/9.30.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.31</span>
+                <span class="chapter-title-text">On the Yama's giving Śakti Mantra to Sāvitrī</span>
+                <a href="datafiles/B09/C31/9.31.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.32</span>
+                <span class="chapter-title-text">On the enumeration of various hells for sinners</span>
+                <a href="datafiles/B09/C32/9.32.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.33</span>
+                <span class="chapter-title-text">On the description of the destinies of different sinners in different hells</span>
+                <a href="datafiles/B09/C33/9.33.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.34</span>
+                <span class="chapter-title-text">On the description of the various hells</span>
+                <a href="datafiles/B09/C34/9.34.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.35</span>
+                <span class="chapter-title-text">On the description of the various hells for the various sinners</span>
+                <a href="datafiles/B09/C35/9.35.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.36</span>
+                <span class="chapter-title-text">On the destruction of the fear of the Yama of those who are the worshippers of the Five Devatās</span>
+                <a href="datafiles/B09/C36/9.36.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.37</span>
+                <span class="chapter-title-text">On the eighty-six Kuṇḍas and their characteristics</span>
+                <a href="datafiles/B09/C37/9.37.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.38</span>
+                <span class="chapter-title-text">On the glories of the Devī and on the nature of Bhakti</span>
+                <a href="datafiles/B09/C38/9.38.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.39</span>
+                <span class="chapter-title-text">On the story of Mahā Lakṣmī</span>
+                <a href="datafiles/B09/C39/9.39.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.40</span>
+                <span class="chapter-title-text">On the birth of Lakṣmī in the discourse of Nārada and Nārāyaṇa</span>
+                <a href="datafiles/B09/C40/9.40.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.41</span>
+                <span class="chapter-title-text">On the churning of the ocean and on the appearing of Lakṣmī</span>
+                <a href="datafiles/B09/C41/9.41.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.42</span>
+                <span class="chapter-title-text">On the Dhyānam and Stotra of Mahā Lakṣmī</span>
+                <a href="datafiles/B09/C42/9.42.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.43</span>
+                <span class="chapter-title-text">On the history of Svāhā</span>
+                <a href="datafiles/B09/C43/9.43.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.44</span>
+                <span class="chapter-title-text">On the story of Svadhā Devī in the discourse between Nārada and Nārāyaṇa</span>
+                <a href="datafiles/B09/C44/9.44.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.45</span>
+                <span class="chapter-title-text">On the anecdote of Dakṣiṇā</span>
+                <a href="datafiles/B09/C45/9.45.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.46</span>
+                <span class="chapter-title-text">On the anecdote of Ṣaṣṭhī Devī</span>
+                <a href="datafiles/B09/C46/9.46.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.47</span>
+                <span class="chapter-title-text">On Manasā’s story</span>
+                <a href="datafiles/B09/C47/9.47.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.48</span>
+                <span class="chapter-title-text">On the anecdote of Manasā</span>
+                <a href="datafiles/B09/C48/9.48.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.49</span>
+                <span class="chapter-title-text">On the anecdote of Surabhi</span>
+                <a href="datafiles/B09/C49/9.49.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">9.50</span>
+                <span class="chapter-title-text">On the Glory of Śakti</span>
+                <a href="datafiles/B09/C50/9.50.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B10" >
+            <summary class="book-summary">
+                <span class="book-title">Book 10</span>
+                <span class="badge badge-count">13 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">10.1</span>
+                <span class="chapter-title-text">On the story of Svāyambhuva Manu</span>
+                <a href="datafiles/B10/C01/10.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.2</span>
+                <span class="chapter-title-text">On the conversation between Nārada and the Bindhya Mountain</span>
+                <a href="datafiles/B10/C02/10.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.3</span>
+                <span class="chapter-title-text">On the obstruction of the Sun’s course by the Bindhya Mountain</span>
+                <a href="datafiles/B10/C03/10.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.4</span>
+                <span class="chapter-title-text">On the Devas going to Mahā Deva</span>
+                <a href="datafiles/B10/C04/10.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.5</span>
+                <span class="chapter-title-text">On the Devas going to Viṣṇu</span>
+                <a href="datafiles/B10/C05/10.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.6</span>
+                <span class="chapter-title-text">On the Devas praying to the Muni Agastya</span>
+                <a href="datafiles/B10/C06/10.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.7</span>
+                <span class="chapter-title-text">On the checking of the rise of the Bindhya Range</span>
+                <a href="datafiles/B10/C07/10.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.8</span>
+                <span class="chapter-title-text">On the origin of Manu</span>
+                <a href="datafiles/B10/C08/10.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.9</span>
+                <span class="chapter-title-text">On the narrative of Cākṣuṣa Manu</span>
+                <a href="datafiles/B10/C09/10.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.10</span>
+                <span class="chapter-title-text">On the anecdote of the King Suratha</span>
+                <a href="datafiles/B10/C10/10.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.11</span>
+                <span class="chapter-title-text">On the killing of Madhu Kaiṭabha</span>
+                <a href="datafiles/B10/C11/10.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.12</span>
+                <span class="chapter-title-text">On the anecdote of Sāvarṇi Manu</span>
+                <a href="datafiles/B10/C12/10.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">10.13</span>
+                <span class="chapter-title-text">On the account of Bhrāmarī Devī</span>
+                <a href="datafiles/B10/C13/10.13.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B11" >
+            <summary class="book-summary">
+                <span class="book-title">Book 11</span>
+                <span class="badge badge-count">24 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">11.1</span>
+                <span class="chapter-title-text">On what is to be thought of in the morning</span>
+                <a href="datafiles/B11/C01/11.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.2</span>
+                <span class="chapter-title-text">On cleansing the several parts of the body</span>
+                <a href="datafiles/B11/C02/11.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.3</span>
+                <span class="chapter-title-text">On the glories of the Rudrākṣa beads</span>
+                <a href="datafiles/B11/C03/11.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.4</span>
+                <span class="chapter-title-text">On the greatness of the Rudrākṣam</span>
+                <a href="datafiles/B11/C04/11.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.5</span>
+                <span class="chapter-title-text">On the Rudrākṣam rosaries</span>
+                <a href="datafiles/B11/C05/11.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.6</span>
+                <span class="chapter-title-text">On the greatness of Rudrākṣams</span>
+                <a href="datafiles/B11/C06/11.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.7</span>
+                <span class="chapter-title-text">On the greatness of one faced, etc., Rudrākṣam</span>
+                <a href="datafiles/B11/C07/11.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.8</span>
+                <span class="chapter-title-text">On Bhūta Śuddhi</span>
+                <a href="datafiles/B11/C08/11.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.9</span>
+                <span class="chapter-title-text">On the rules of Śirovrata</span>
+                <a href="datafiles/B11/C09/11.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.10</span>
+                <span class="chapter-title-text">On the subject of Gauṇa Bhasma</span>
+                <a href="datafiles/B11/C10/11.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.11</span>
+                <span class="chapter-title-text">On the description of the greatness of the three kinds of Bhaṣmas</span>
+                <a href="datafiles/B11/C11/11.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.12</span>
+                <span class="chapter-title-text">On the greatness in holding the Tripuṇḍra and Bhaṣma</span>
+                <a href="datafiles/B11/C12/11.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.13</span>
+                <span class="chapter-title-text">On the greatness of Bhasma</span>
+                <a href="datafiles/B11/C13/11.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.14</span>
+                <span class="chapter-title-text">On the greatness in holding the Bibhūti</span>
+                <a href="datafiles/B11/C14/11.14.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.15</span>
+                <span class="chapter-title-text">On the rules of using the Tripuṇḍra and Ūrdhapuṇḍra marks</span>
+                <a href="datafiles/B11/C15/11.15.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.16</span>
+                <span class="chapter-title-text">On the description of Sandhyā Upāsānā</span>
+                <a href="datafiles/B11/C16/11.16.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.17</span>
+                <span class="chapter-title-text">On the description of Sandhyā and other daily practices</span>
+                <a href="datafiles/B11/C17/11.17.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.18</span>
+                <span class="chapter-title-text">On the Greatness of the Devī Pūjā</span>
+                <a href="datafiles/B11/C18/11.18.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.19</span>
+                <span class="chapter-title-text">On the midday Sandhyā</span>
+                <a href="datafiles/B11/C19/11.19.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.20</span>
+                <span class="chapter-title-text">On the description of Brahmā Yajñā, Sandhyās, etc.</span>
+                <a href="datafiles/B11/C20/11.20.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.21</span>
+                <span class="chapter-title-text">On Gāyatrī Puraścaraṇam</span>
+                <a href="datafiles/B11/C21/11.21.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.22</span>
+                <span class="chapter-title-text">On the rules of Vaiśvadeva</span>
+                <a href="datafiles/B11/C22/11.22.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.23</span>
+                <span class="chapter-title-text">On the Tapta Kṛcchra vrata and others</span>
+                <a href="datafiles/B11/C23/11.23.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">11.24</span>
+                <span class="chapter-title-text">On Sadācāra</span>
+                <a href="datafiles/B11/C24/11.24.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+        <details class="book-card" id="B12" >
+            <summary class="book-summary">
+                <span class="book-title">Book 12</span>
+                <span class="badge badge-count">14 Chapters</span>
+            </summary>
+            <div class="chapter-list">
+                
+            <div class="chapter-row">
+                <span class="chapter-num">12.1</span>
+                <span class="chapter-title-text">On the description of Gāyatrī</span>
+                <a href="datafiles/B12/C01/12.1.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.2</span>
+                <span class="chapter-title-text">On the description of the Śaktis, etc., of the syllables of Gāyatrī</span>
+                <a href="datafiles/B12/C02/12.2.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.3</span>
+                <span class="chapter-title-text">On the description of the Kavaca of Śrī Gāyatrī Devī</span>
+                <a href="datafiles/B12/C03/12.3.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.4</span>
+                <span class="chapter-title-text">On Gāyatrī Hridaya</span>
+                <a href="datafiles/B12/C04/12.4.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.5</span>
+                <span class="chapter-title-text">On the Gāyatrī Stotra</span>
+                <a href="datafiles/B12/C05/12.5.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.6</span>
+                <span class="chapter-title-text">On the one thousand and eight names of the Gāyatrī</span>
+                <a href="datafiles/B12/C06/12.6.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.7</span>
+                <span class="chapter-title-text">On the Dīkṣā vidhi or on the rules of Initiation</span>
+                <a href="datafiles/B12/C07/12.7.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.8</span>
+                <span class="chapter-title-text">On the appearance of the Highest Śakti</span>
+                <a href="datafiles/B12/C08/12.8.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.9</span>
+                <span class="chapter-title-text">On the cause of Śrāddha in other Devas than the Devī Gāyatrī</span>
+                <a href="datafiles/B12/C09/12.9.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.10</span>
+                <span class="chapter-title-text">On the description of Maṇi Dvīpa</span>
+                <a href="datafiles/B12/C10/12.10.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.11</span>
+                <span class="chapter-title-text">On the description of the enclosure walls built of Padmarāga maṇi, etc., of the Maṇi Dvīpa</span>
+                <a href="datafiles/B12/C11/12.11.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.12</span>
+                <span class="chapter-title-text">On the description of Maṇi Dvīpa</span>
+                <a href="datafiles/B12/C12/12.12.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.13</span>
+                <span class="chapter-title-text">On the description of Janamejaya’s Devī Yajñā</span>
+                <a href="datafiles/B12/C13/12.13.html" class="btn-read">READ</a>
+            </div>
+            <div class="chapter-row">
+                <span class="chapter-num">12.14</span>
+                <span class="chapter-title-text">On the recitation of the fruits of this Purāṇam</span>
+                <a href="datafiles/B12/C14/12.14.html" class="btn-read">READ</a>
+            </div>
+            </div>
+        </details>
+
+        <!-- Site Footer -->
+        <footer class="doc-footer" style="margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.9rem;">
+            <p><strong>🙏 Shri Krishnarpanam Asthu 🙏</strong> | Maintained &amp; published via <a href="https://ventpipe.blog" target="_blank" rel="noopener noreferrer" style="color: #0284c7; text-decoration: none; font-weight: 500;">ventpipe.blog</a></p>
+        </footer>
+    </div>
+
+    <!-- Pagefind JS Script Initialization -->
+    <script src="pagefind/pagefind-ui.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            new PagefindUI({ 
+                element: "#search", 
+                showSubResults: true,
+                showImages: false
+            });
+
+            // Auto-expand and scroll to target book if hashtag is present (e.g., #B09)
+            if (window.location.hash) {
+                const targetEl = document.querySelector(window.location.hash);
+                if (targetEl && targetEl.tagName === 'DETAILS') {
+                    targetEl.open = true;
+                    setTimeout(() => {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+        });
+
+        function toggleBooks(open) {
+            document.querySelectorAll('.book-card').forEach(el => {
+                el.open = open;
+            });
+        }
+    </script>
+</body>
+</html>

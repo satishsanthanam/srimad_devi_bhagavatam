@@ -1,0 +1,321 @@
+/* General Layout & Typography */
+:root {
+    --primary-color: #8b0000;
+    --text-color: #2c2c2c;
+    --bg-color: #fdfbf7;
+    --card-bg: #ffffff;
+    --border-color: #e2d9cc;
+    --sanskrit-color: #6b0000;
+    --text-muted: #64748b;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #f0f7ff; /* Soft pastel blue to prevent heavy contrast */
+    color: #1a202c;
+}
+
+.container {
+    max-width: 850px;
+    width: 100%;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+/* Header & Navigation */
+.doc-header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Chapter Verse Details */
+.verse-details {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 12px 18px;
+}
+
+.verse-details summary {
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-muted);
+}
+
+.sanskrit-card {
+    font-family: 'Noto Sans Devanagari', 'Siddhanta', serif;
+    font-size: 1.15rem;
+    color: var(--sanskrit-color);
+    background: #fdfbf7;
+    padding: 14px;
+    border-radius: 6px;
+    margin-top: 8px;
+    border-left: 3px solid var(--primary-color);
+    white-space: pre-wrap;
+    line-height: 1.9;
+}
+
+/* English Translation Card: Eye-friendly light green tint */
+.english-card {
+    background-color: #f0fdf4; /* Soft mint/sage background */
+    border-left: 4px solid #16a34a; /* Vibrant green accent border */
+    color: #14532d; /* Dark slate green text for crisp legibility */
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    margin-top: 0.5rem;
+}
+
+/* Section label above the English card */
+.label-english {
+    color: #15803d;
+    font-weight: 600;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 18px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+/* Header Title Styling */
+.site-header {
+    text-align: center;
+    padding: 1.5rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+}
+
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color, #1a365d);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Header Title Link */
+.header-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.header-title-link:hover {
+    color: #1d4ed8; /* Soft blue on hover */
+}
+
+/* Chapter Subtitle Styling */
+.chapter-subtitle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #475569;
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+}
+
+/* Subtitle Breadcrumb Link */
+.chapter-subtitle a.breadcrumb-link {
+    color: #2563eb;               /* Subtle blue */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.chapter-subtitle a.breadcrumb-link:hover {
+    text-decoration: underline;  /* Underline on hover */
+    color: #1d4ed8;
+}
+
+/* Gives breathing room when jumping to #B01, #B09, etc. */
+[id^="B"] {
+    scroll-margin-top: 2rem;
+}
+
+/* Enable smooth scrolling across the page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Colophon Label */
+.label-colophon {
+    color: #6b21a8; /* Deep purple label */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+}
+
+/* Colophon Card */
+.colophon-card {
+    background-color: #faf5ff; /* Subtle purple tint */
+    border-left: 4px solid #9333ea; /* Purple left border accent */
+    padding: 0.85rem 1rem;
+    border-radius: 0 8px 8px 0;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4c1d95;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* Navigation Container */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Base Nav Button */
+.nav-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(.disabled) {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
+  color: #111827;
+}
+
+/* Disabled state (first/last chapter) */
+.nav-btn.disabled {
+  color: #9ca3af;
+  background-color: #f9fafb;
+  border-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+/* Quick Index link accent */
+.nav-btn.index-btn {
+  background-color: #fdf4ff;
+  color: #7e22ce;
+  border-color: #f5d0fe;
+}
+
+.nav-btn.index-btn:hover {
+  background-color: #fae8ff;
+}
+
+/* Colophon Label */
+.label-colophon {
+    color: #6b21a8; /* Deep purple label */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+}
+
+/* Colophon Card */
+.colophon-card {
+    background-color: #faf5ff; /* Subtle purple tint */
+    border-left: 4px solid #9333ea; /* Purple left border accent */
+    padding: 0.85rem 1rem;
+    border-radius: 0 8px 8px 0;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4c1d95;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
