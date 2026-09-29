@@ -1,7 +1,3 @@
-﻿Here is a tailored, professional **`README.md`** designed specifically for your **Śrīmad Devī Bhāgavatam** project repository.
-
----
-
 # Śrīmad Devī Bhāgavatam (Verse-Mapped Digital Edition)
 
 A high-performance, responsive static web publication and search platform for the complete **Śrīmad Devī Bhāgavatam Mahāpurāṇa** across all 12 Skandhas (318 Chapters). The platform provides side-by-side Sanskrit Devanagari text, English translations by Swami Vijñanananda (1921), dynamic chapter index navigation, and client-side static site search.
